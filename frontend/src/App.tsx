@@ -19,7 +19,7 @@ function App() {
   const [cityInfo, setCityInfo] = useState<any>(null)
   const [query, setQuery] = useState("London")
   const [error, setError] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -46,7 +46,7 @@ function App() {
   }, [])
   useEffect(() => {
     const getData = async () => {
-      setLoading(true)
+      // setLoading(true)
       setError(null)
       try {
         const forecastRes = await fetch(
@@ -57,7 +57,7 @@ function App() {
         // WeatherAPI returns error object if location not found
         if (forecast.error) {
           setError("Location not found. Try a city name, zip code, or coordinates.")
-          setLoading(false)
+          // setLoading(false)
           return
         }
 
@@ -87,7 +87,7 @@ function App() {
         setError("Something went wrong. Please check your connection and try again.")
         console.error(err)
       } finally {
-        setLoading(false)
+        // setLoading(false)
       }
     }
     getData()
