@@ -134,14 +134,23 @@ function App() {
             </div>
           )}
           <Input
+            value={inputValue}
             className="w-full rounded-none bg-white h-[90px] focus-visible:ring-0 pointer-events-auto border-none placeholder:text-lg"
             placeholder="Give us Zip Code/Postal Code, GPS Coordinates, Landmarks, Town, City and we will do the rest"
             onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && setQuery(inputValue)}
+            onKeyDown={
+              (e) => {
+                if (e.key === "Enter") {
+                  setQuery(inputValue);
+                  setInputValue("");
+                }
+              }}
           />
           <div className="w-full flex justify-end px-2">
             <Button className="hover:bg-white bg-[#0000FF]"
-              onClick={() => setQuery(inputValue)}
+              onClick={() => setQuery(inputValue)
+
+              }
             >
               <ArrowUp size={20} />
             </Button>
